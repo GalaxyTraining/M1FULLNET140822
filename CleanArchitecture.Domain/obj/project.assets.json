@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj",
+      "projectUniqueName": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj",
       "projectName": "CleanArchitecture.Domain",
-      "projectPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj",
+      "projectPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj",
       "packagesPath": "C:\\Users\\ANTHONY\\.nuget\\packages\\",
-      "outputPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Domain\\obj\\",
+      "outputPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

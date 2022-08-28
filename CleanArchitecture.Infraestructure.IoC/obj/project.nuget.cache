@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/iIcQ1kPms1HMFu5uH4MTioUnmrWfcjZ2gs+B7evl/b3tFiEy4Dc+UvPU9rJdd3qIFflT7WLrht4rH3bUOw+TQ==",
+  "dgSpecHash": "8w8Qz2h7NLpsBKdhaJZpRZltDP/zHOV1uvTn3NDtOg2ppTJSr05sGGtN0W4m+WxasfFAaHvOHIl17k80NjUtRw==",
   "success": true,
-  "projectFilePath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.IoC\\CleanArchitecture.Infraestructure.IoC.csproj",
+  "projectFilePath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.IoC\\CleanArchitecture.Infraestructure.IoC.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ANTHONY\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\ANTHONY\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "9LiWls5AqgJrdbWipiwkS06tQK8IDwNYECCCubopxSjqJnwQdHVtIh9i0LYAmo8oeVubaVWiQfuNbkf1owkSlQ==",
+  "dgSpecHash": "2nfMSaO8yjctzKOGUzd4B/v3zIL6ntT8BJQfnT7miuYM0oAEU0USaGicZIPRC4PxXyeo33i0hjAHOhszo3Kv7w==",
   "success": true,
-  "projectFilePath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj",
+  "projectFilePath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ANTHONY\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\ANTHONY\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

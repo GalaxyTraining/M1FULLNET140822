@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj": {}
+    "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj": {}
   },
   "projects": {
-    "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj": {
+    "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj",
+        "projectUniqueName": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj",
         "projectName": "CleanArchitecture.Domain",
-        "projectPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj",
+        "projectPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj",
         "packagesPath": "C:\\Users\\ANTHONY\\.nuget\\packages\\",
-        "outputPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Domain\\obj\\",
+        "outputPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -64,14 +64,14 @@
         }
       }
     },
-    "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj": {
+    "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj",
+        "projectUniqueName": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj",
         "projectName": "CleanArchitecture.Infraestructure.Data",
-        "projectPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj",
+        "projectPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj",
         "packagesPath": "C:\\Users\\ANTHONY\\.nuget\\packages\\",
-        "outputPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.Data\\obj\\",
+        "outputPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -94,8 +94,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj": {
-                "projectPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj"
+              "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj": {
+                "projectPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Domain\\CleanArchitecture.Domain.csproj"
               }
             }
           }

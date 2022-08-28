@@ -22,3 +22,15 @@ D:\CursoNet6Angular13Galaxy\Clase03\SolutionCleanArchitecture\CleanArchitecture.
 D:\CursoNet6Angular13Galaxy\Clase03\SolutionCleanArchitecture\CleanArchitecture.Domain\obj\Debug\net6.0\refint\CleanArchitecture.Domain.dll
 D:\CursoNet6Angular13Galaxy\Clase03\SolutionCleanArchitecture\CleanArchitecture.Domain\obj\Debug\net6.0\CleanArchitecture.Domain.pdb
 D:\CursoNet6Angular13Galaxy\Clase03\SolutionCleanArchitecture\CleanArchitecture.Domain\obj\Debug\net6.0\ref\CleanArchitecture.Domain.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\bin\Debug\net6.0\CleanArchitecture.Domain.deps.json
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\bin\Debug\net6.0\CleanArchitecture.Domain.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\bin\Debug\net6.0\CleanArchitecture.Domain.pdb
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\obj\Debug\net6.0\CleanArchitecture.Domain.csproj.AssemblyReference.cache
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\obj\Debug\net6.0\CleanArchitecture.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\obj\Debug\net6.0\CleanArchitecture.Domain.AssemblyInfoInputs.cache
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\obj\Debug\net6.0\CleanArchitecture.Domain.AssemblyInfo.cs
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\obj\Debug\net6.0\CleanArchitecture.Domain.csproj.CoreCompileInputs.cache
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\obj\Debug\net6.0\CleanArchitecture.Domain.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\obj\Debug\net6.0\refint\CleanArchitecture.Domain.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\obj\Debug\net6.0\CleanArchitecture.Domain.pdb
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Domain\obj\Debug\net6.0\ref\CleanArchitecture.Domain.dll

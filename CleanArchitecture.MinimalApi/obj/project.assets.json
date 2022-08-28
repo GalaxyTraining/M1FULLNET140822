@@ -2049,11 +2049,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.MinimalApi\\CleanArchitecture.MinimalApi.csproj",
+      "projectUniqueName": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.MinimalApi\\CleanArchitecture.MinimalApi.csproj",
       "projectName": "CleanArchitecture.MinimalApi",
-      "projectPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.MinimalApi\\CleanArchitecture.MinimalApi.csproj",
+      "projectPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.MinimalApi\\CleanArchitecture.MinimalApi.csproj",
       "packagesPath": "C:\\Users\\ANTHONY\\.nuget\\packages\\",
-      "outputPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.MinimalApi\\obj\\",
+      "outputPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.MinimalApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
@@ -2076,11 +2076,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj": {
-              "projectPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj"
+            "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj": {
+              "projectPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.Data\\CleanArchitecture.Infraestructure.Data.csproj"
             },
-            "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.IoC\\CleanArchitecture.Infraestructure.IoC.csproj": {
-              "projectPath": "D:\\CursoNet6Angular13Galaxy\\Clase03\\SolutionCleanArchitecture\\CleanArchitecture.Infraestructure.IoC\\CleanArchitecture.Infraestructure.IoC.csproj"
+            "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.IoC\\CleanArchitecture.Infraestructure.IoC.csproj": {
+              "projectPath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.Infraestructure.IoC\\CleanArchitecture.Infraestructure.IoC.csproj"
             }
           }
         }
