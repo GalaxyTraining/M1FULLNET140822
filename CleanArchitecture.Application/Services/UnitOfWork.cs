@@ -14,9 +14,12 @@ namespace CleanArchitecture.Application.Services
         {
             productServices = new ProductServices(context);
             usuarioServices = new UsuarioServices(context);
+            compraServices = new CompraServices(context);
         }
         public IProductServices productServices { get; private set; }
 
         public IUsuarioServices usuarioServices { get; private set; }
+
+        public ICompraServices compraServices { get; private set; }
     }
 }

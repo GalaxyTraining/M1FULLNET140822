@@ -11,5 +11,7 @@ namespace CleanArchitecture.Application.Interfaces
         IProductServices productServices { get; }
 
         IUsuarioServices usuarioServices { get; }
+
+        ICompraServices compraServices { get; }
     }
 }
