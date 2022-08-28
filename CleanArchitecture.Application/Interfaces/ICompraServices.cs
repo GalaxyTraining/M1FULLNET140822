@@ -13,7 +13,7 @@ namespace CleanArchitecture.Application.Interfaces
 
         Task<Compra> GetById(int id);
 
-        Task<int> InsetProduct(Compra product);
+        Task<int> Insert(Compra product);
 
         Task<bool> UpdateProduct(Compra product);
 

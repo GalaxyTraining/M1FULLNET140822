@@ -1,3 +1,5 @@
+using CleanArchitecture.Application.Constants;
+using CleanArchitecture.Application.Enum;
 using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Domain.Models;
 using CleanArchitecture.Infraestructure.Data.Context;
@@ -155,6 +157,26 @@ app.MapDelete("/Product/Delete/{id}", [Authorize] async (int id, IUnitOfWork uni
     catch (Exception ex)
     {
         return Results.BadRequest(ex.Message);
+    }
+});
+
+app.MapPost("/Compra/Save", [Authorize] async (Compra compra,IUnitOfWork unitOfWork) =>
+{
+    string resp = string.Empty;
+    RespuestaTransaccionDto respuestaTransaccionDto = new();
+    try
+    {
+        int result = await unitOfWork.compraServices.Insert(compra);
+        if(result==0) return Results.BadRequest();
+        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
+        respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
+        return Results.Ok(respuestaTransaccionDto);
+    }
+    catch (Exception ex)
+    {
+        respuestaTransaccionDto.Resultado = Mensajes.CODIGO_ERROR;
+        respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
+        return Results.BadRequest(respuestaTransaccionDto);
     }
 });
 app.Run();

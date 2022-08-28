@@ -26,7 +26,7 @@ namespace CleanArchitecture.Application.Services
         {
             return await _compraRepository.GetById(id);
         }
-        public async Task<int> InsetProduct(Compra product)
+        public async Task<int> Insert(Compra product)
         {
             return await _compraRepository.Insert(product);
         }
