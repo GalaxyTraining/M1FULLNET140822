@@ -199,3 +199,4 @@ D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Debug\n
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Debug\net6.0\CleanArchitecture.MinimalApi.pdb
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Debug\net6.0\CleanArchitecture.MinimalApi.genruntimeconfig.cache
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Debug\net6.0\ref\CleanArchitecture.MinimalApi.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

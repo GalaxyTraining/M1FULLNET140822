@@ -2,7 +2,10 @@ using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Domain.Models;
 using CleanArchitecture.Infraestructure.Data.Context;
 using CleanArchitecture.Infraestructure.IoC;
+using CleanArchitecture.MinimalApi;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 string myAllowSpecificOrigins = "_ myAllowSpecificOrigins";
@@ -16,10 +19,38 @@ builder.Services.AddCors(options =>
         builder.WithOrigins(configuration.GetValue<string>("APP_URL_ANGULAR")).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
     });
 });
+builder.Services.AddAuthorization();
+builder.Services.AddTokenAuthentication(configuration);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "MyProject", Version = "v1.0.0" });
+
+    var securitySchema = new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        Reference = new OpenApiReference
+        {
+            Type = ReferenceType.SecurityScheme,
+            Id = "Bearer"
+        }
+    };
+
+    c.AddSecurityDefinition("Bearer", securitySchema);
+
+    var securityRequirement = new OpenApiSecurityRequirement
+                {
+                    { securitySchema, new[] { "Bearer" } }
+                };
+
+    c.AddSecurityRequirement(securityRequirement);
+});
 DependencyContainer.RegisterServices(builder.Services);
 var app = builder.Build();
 
@@ -30,9 +61,28 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseCors(myAllowSpecificOrigins);
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseHttpsRedirection();
 
-app.MapGet("/Product/List", async (IUnitOfWork unitOfWork) =>
+app.MapPost("Security/ValidateUser", [AllowAnonymous] async (Usuario usuario,IUnitOfWork unitOfWork) =>
+{
+    ITokenService tokenService = new TokenService(configuration);
+    if (usuario == null) Results.BadRequest();
+    var credencial = await unitOfWork.usuarioServices.ValidateUser(usuario);
+    if(credencial!=null)
+    {
+        var Token= tokenService.BuildToken(usuario);
+        usuario.Token = Token;
+        return Results.Ok(usuario);
+    }
+    else
+    {
+        return Results.NotFound();
+    }
+});
+
+app.MapGet("/Product/List", [Authorize]  async (IUnitOfWork unitOfWork) =>
 {
     try
     {
@@ -47,7 +97,7 @@ app.MapGet("/Product/List", async (IUnitOfWork unitOfWork) =>
     }
 });
 
-app.MapGet("/Product/{id}", async (int id, IUnitOfWork unitOfWork) =>
+app.MapGet("/Product/{id}", [Authorize] async (int id, IUnitOfWork unitOfWork) =>
 {
     try
     {
@@ -62,7 +112,7 @@ app.MapGet("/Product/{id}", async (int id, IUnitOfWork unitOfWork) =>
     }
 });
 
-app.MapPost("/Product/Save", async (Producto product, IUnitOfWork unitOfWork) =>
+app.MapPost("/Product/Save", [Authorize]  async (Producto product, IUnitOfWork unitOfWork) =>
 {
     string resp =string.Empty;
     try
@@ -78,7 +128,7 @@ app.MapPost("/Product/Save", async (Producto product, IUnitOfWork unitOfWork) =>
     }
 });
 
-app.MapPut("/Product/Update", async (Producto product, IUnitOfWork unitOfWork) =>
+app.MapPut("/Product/Update", [Authorize]  async (Producto product, IUnitOfWork unitOfWork) =>
 {
     try
     {
@@ -93,7 +143,7 @@ app.MapPut("/Product/Update", async (Producto product, IUnitOfWork unitOfWork) =
     }
 });
 
-app.MapDelete("/Product/Delete/{id}", async (int id, IUnitOfWork unitOfWork) =>
+app.MapDelete("/Product/Delete/{id}", [Authorize] async (int id, IUnitOfWork unitOfWork) =>
 {
     try
     {
