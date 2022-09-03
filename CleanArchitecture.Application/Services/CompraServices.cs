@@ -30,11 +30,11 @@ namespace CleanArchitecture.Application.Services
         {
             return await _compraRepository.Insert(product);
         }
-        public async Task<bool> UpdateProduct(Compra product)
+        public async Task<bool> Update(Compra product)
         {
             return await _compraRepository.Update(product);
         }
-        public async Task<bool> DeleteProduct(int id)
+        public async Task<bool> Delete(int id)
         {
             return await _compraRepository.Delete(id);
         }

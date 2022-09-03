@@ -15,8 +15,8 @@ namespace CleanArchitecture.Application.Interfaces
 
         Task<int> Insert(Compra product);
 
-        Task<bool> UpdateProduct(Compra product);
+        Task<bool> Update(Compra product);
 
-        Task<bool> DeleteProduct(int id);
+        Task<bool> Delete(int id);
     }
 }
