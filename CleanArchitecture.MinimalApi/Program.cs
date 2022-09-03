@@ -116,47 +116,63 @@ app.MapGet("/Product/{id}", [Authorize] async (int id, IUnitOfWork unitOfWork) =
 
 app.MapPost("/Product/Save", [Authorize]  async (Producto product, IUnitOfWork unitOfWork) =>
 {
-    string resp =string.Empty;
+    string resp = string.Empty;
+    RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
     {
         int result = await unitOfWork.productServices.InsetProduct(product);
         if (result == 0) return Results.BadRequest();
-        resp = result == 1 ? "0000" : "1111";
-        return Results.Ok(new {resultado= resp,Descripcion="Transaccion Exitosa" });
+        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
+        respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
+        return Results.Ok(respuestaTransaccionDto);
     }
     catch (Exception ex)
     {
-        return Results.BadRequest(new { resultado = resp, Descripcion = "Error  al procesar la transaccion:"+ex.Message });
+        respuestaTransaccionDto.Resultado = Mensajes.CODIGO_ERROR;
+        respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
+        return Results.BadRequest(respuestaTransaccionDto);
     }
 });
 
 app.MapPut("/Product/Update", [Authorize]  async (Producto product, IUnitOfWork unitOfWork) =>
 {
+    int respFinal = 0;
+    RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
     {
         bool result = await unitOfWork.productServices.UpdateProduct(product);
         if (result == false) return Results.BadRequest();
-
-        return Results.Ok(result);
+        respFinal = !result ? 0 : 1;
+        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(respFinal);
+        respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
+        return Results.Ok(respuestaTransaccionDto);
     }
     catch (Exception ex)
     {
-        return Results.BadRequest(ex.Message);
+        respuestaTransaccionDto.Resultado = Mensajes.CODIGO_ERROR;
+        respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
+        return Results.BadRequest(respuestaTransaccionDto);
     }
 });
 
 app.MapDelete("/Product/Delete/{id}", [Authorize] async (int id, IUnitOfWork unitOfWork) =>
 {
+    int respFinal = 0;
+    RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
     {
         bool result = await unitOfWork.productServices.DeleteProduct(id);
         if (result == false) return Results.BadRequest();
-
-        return Results.Ok(result);
+        respFinal = !result ? 0 : 1;
+        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(respFinal);
+        respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
+        return Results.Ok(respuestaTransaccionDto);
     }
     catch (Exception ex)
     {
-        return Results.BadRequest(ex.Message);
+        respuestaTransaccionDto.Resultado = Mensajes.CODIGO_ERROR;
+        respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
+        return Results.BadRequest(respuestaTransaccionDto);
     }
 });
 
