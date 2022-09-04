@@ -58,11 +58,11 @@ DependencyContainer.RegisterServices(builder.Services);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
 app.UseCors(myAllowSpecificOrigins);
 app.UseAuthentication();
 app.UseAuthorization();
@@ -70,19 +70,27 @@ app.UseHttpsRedirection();
 
 app.MapPost("Security/ValidateUser", [AllowAnonymous] async (Usuario usuario,IUnitOfWork unitOfWork) =>
 {
-    ITokenService tokenService = new TokenService(configuration);
-    if (usuario == null) Results.BadRequest();
-    var credencial = await unitOfWork.usuarioServices.ValidateUser(usuario);
-    if(credencial!=null)
+    try
     {
-        var Token= tokenService.BuildToken(usuario);
-        usuario.Token = Token;
-        return Results.Ok(usuario);
+        ITokenService tokenService = new TokenService(configuration);
+        if (usuario == null) Results.BadRequest();
+        var credencial = await unitOfWork.usuarioServices.ValidateUser(usuario);
+        if (credencial != null)
+        {
+            var Token = tokenService.BuildToken(usuario);
+            usuario.Token = Token;
+            return Results.Ok(usuario);
+        }
+        else
+        {
+            return Results.NotFound();
+        }
     }
-    else
-    {
-        return Results.NotFound();
+    catch (Exception ex)
+    { 
+        return Results.BadRequest(ex.Message);
     }
+   
 });
 
 app.MapGet("/Product/List", [Authorize]  async (IUnitOfWork unitOfWork) =>
