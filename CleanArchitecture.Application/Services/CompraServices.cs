@@ -26,17 +26,17 @@ namespace CleanArchitecture.Application.Services
         {
             return await _compraRepository.GetById(id);
         }
-        public async Task<int> Insert(Compra product)
+        public void  Insert(Compra compra)
         {
-            return await _compraRepository.Insert(product);
+           _compraRepository.Insert(compra);
         }
-        public async Task<bool> Update(Compra product)
+        public void  Update(Compra compra)
         {
-            return await _compraRepository.Update(product);
+            _compraRepository.Update(compra);
         }
-        public async Task<bool> Delete(int id)
+        public void  Delete(int id)
         {
-            return await _compraRepository.Delete(id);
+             _compraRepository.Delete(id);
         }
     }
 }

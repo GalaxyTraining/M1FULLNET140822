@@ -7,15 +7,13 @@ using System.Threading.Tasks;
 
 namespace CleanArchitecture.Domain.Interfaces
 {
-    public interface ICompraRepository
+    public interface IDetalleCompraRepository
     {
-        Task<List<Compra>> GetAll();
+        Task<List<DetalleCompra>> GetAll();
+        Task<DetalleCompra> GetById(int id);
+        void Insert(DetalleCompra compra);
 
-        Task<Compra> GetById(int id);
-
-        void Insert(Compra compra);
-
-        void Update(Compra compra);
+        void Update(DetalleCompra compra);
 
         void Delete(int id);
 

@@ -24,20 +24,20 @@ namespace CleanArchitecture.Infraestructure.Data.Repositories
         }
         public async Task<Producto> GetProductById(int id)
         {
-            return await repositoryEF.GetEntityById(id);
+            return await repositoryEF.GetEntityByIdAsync(id);
         }
-        public async Task<int> Insert(Producto producto)
+        public void Insert(Producto producto)
         {
-            return await repositoryEF.Insert(producto);
+              repositoryEF.Insert(producto);
         }
-        public async Task<bool> Update(Producto producto)
+        public void  Update(Producto producto)
         {
-            return await repositoryEF.Update(producto);
+            repositoryEF.Update(producto);
         }
-        public async Task<bool> Delete(int id)
+        public void  Delete(int id)
         {
-            Producto producto = await repositoryEF.GetEntityById(id);
-            return await repositoryEF.Delete(producto);
+            Producto producto =  repositoryEF.GetEntityById(id);
+            repositoryEF.Delete(producto);
         }
     }
 }

@@ -19,28 +19,33 @@ namespace CleanArchitecture.Infraestructure.Data
         {
              return  await _context.Set<T>().ToListAsync();
         }
-        public async Task<T> GetEntityById(int id)
+        public async Task<T> GetEntityByIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);
         }
-        public async Task<bool> Update(T entity)
+
+        public  T GetEntityById(int id)
+        {
+            return _context.Set<T>().Find(id);
+        }
+        public void  Update(T entity)
         {
             _context.Update(entity);
-            return await _context.SaveChangesAsync() > 0;
+        //    return await _context.SaveChangesAsync() > 0;
         }
-        public async Task<bool> Delete(T entity)
+        public void  Delete(T entity)
         {
             _context.Remove(entity);
-            return await _context.SaveChangesAsync() > 0;
+           // return await _context.SaveChangesAsync() > 0;
         }
         public async Task<T> Obtener<T>(Expression<Func<T,bool>> condicion) where T:class
         {
             return await _context.Set<T>().FirstOrDefaultAsync(condicion);
         }
-        public async Task<int> Insert(T entity)
+        public void  Insert(T entity)
         {
             _context.Add(entity);
-            return await _context.SaveChangesAsync();
+          //    return await _context.SaveChangesAsync();
         }
     }
 }

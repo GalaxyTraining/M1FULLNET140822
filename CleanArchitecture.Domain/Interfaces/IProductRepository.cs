@@ -7,10 +7,10 @@ namespace CleanArchitecture.Domain.Interfaces
         Task<List<Producto>> GetProducts();
         Task<Producto> GetProductById(int id);
 
-        Task<int> Insert(Producto product);
+       void  Insert(Producto product);
 
-        Task<bool> Update(Producto product);
+        void  Update(Producto product);
 
-        Task<bool> Delete(int id);
+       void  Delete(int id);
     }
 }

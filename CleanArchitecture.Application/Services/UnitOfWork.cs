@@ -10,16 +10,25 @@ namespace CleanArchitecture.Application.Services
 {
     public class UnitOfWork: IUnitOfWork
     {
+        private readonly BDEmpresaContext _context;
         public UnitOfWork(BDEmpresaContext context)
         {
+            _context = context;
             productServices = new ProductServices(context);
             usuarioServices = new UsuarioServices(context);
             compraServices = new CompraServices(context);
+            detalleCompraServices = new DetalleCompraServices(context);
         }
         public IProductServices productServices { get; private set; }
 
         public IUsuarioServices usuarioServices { get; private set; }
 
         public ICompraServices compraServices { get; private set; }
+
+        public IDetalleCompraServices detalleCompraServices { get; private set; }
+        public async Task<int> CommitAsync()
+        {
+            return await  _context.SaveChangesAsync();
+        }
     }
 }

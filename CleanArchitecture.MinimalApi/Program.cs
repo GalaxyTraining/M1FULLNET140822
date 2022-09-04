@@ -120,7 +120,8 @@ app.MapPost("/Product/Save", [Authorize]  async (Producto product, IUnitOfWork u
     RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
     {
-        int result = await unitOfWork.productServices.InsetProduct(product);
+         unitOfWork.productServices.InsertProduct(product);
+        int result = await unitOfWork.CommitAsync();
         if (result == 0) return Results.BadRequest();
         respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
         respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
@@ -136,14 +137,13 @@ app.MapPost("/Product/Save", [Authorize]  async (Producto product, IUnitOfWork u
 
 app.MapPut("/Product/Update", [Authorize]  async (Producto product, IUnitOfWork unitOfWork) =>
 {
-    int respFinal = 0;
     RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
     {
-        bool result = await unitOfWork.productServices.UpdateProduct(product);
-        if (result == false) return Results.BadRequest();
-        respFinal = !result ? 0 : 1;
-        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(respFinal);
+         unitOfWork.productServices.UpdateProduct(product);
+        int result = await unitOfWork.CommitAsync();
+        if (result == 0) return Results.BadRequest();
+        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
         respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
         return Results.Ok(respuestaTransaccionDto);
     }
@@ -157,14 +157,13 @@ app.MapPut("/Product/Update", [Authorize]  async (Producto product, IUnitOfWork 
 
 app.MapDelete("/Product/Delete/{id}", [Authorize] async (int id, IUnitOfWork unitOfWork) =>
 {
-    int respFinal = 0;
     RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
     {
-        bool result = await unitOfWork.productServices.DeleteProduct(id);
-        if (result == false) return Results.BadRequest();
-        respFinal = !result ? 0 : 1;
-        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(respFinal);
+         unitOfWork.productServices.DeleteProduct(id);
+        int result = await unitOfWork.CommitAsync();
+        if (result == 0) return Results.BadRequest();
+        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
         respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
         return Results.Ok(respuestaTransaccionDto);
     }
@@ -182,8 +181,9 @@ app.MapPost("/Compra/Save", [Authorize] async (Compra compra,IUnitOfWork unitOfW
     RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
     {
-        int result = await unitOfWork.compraServices.Insert(compra);
-        if(result==0) return Results.BadRequest();
+        unitOfWork.compraServices.Insert(compra);
+        int result = await unitOfWork.CommitAsync();
+        if (result==0) return Results.BadRequest();
         respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
         respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
         return Results.Ok(respuestaTransaccionDto);

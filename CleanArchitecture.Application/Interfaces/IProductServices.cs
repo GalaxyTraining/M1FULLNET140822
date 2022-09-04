@@ -11,9 +11,9 @@ namespace CleanArchitecture.Application.Interfaces
     {
         Task<List<Producto>> GetProducts();
         Task<Producto> GetProductById(int id);
-        Task<int> InsetProduct(Producto product);
-        Task<bool> UpdateProduct(Producto product);
+        void  InsertProduct(Producto product);
+        void UpdateProduct(Producto product);
 
-        Task<bool> DeleteProduct(int id);
+        void DeleteProduct(int id);
     }
 }

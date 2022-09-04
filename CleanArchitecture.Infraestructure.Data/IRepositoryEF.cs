@@ -10,10 +10,12 @@ namespace CleanArchitecture.Infraestructure.Data
     public interface IRepositoryEF<T> where T : class
     {
         Task<List<T>> GetAll();
-        Task<T> GetEntityById(int id);
-        Task<bool> Update(T entity);
-        Task<bool> Delete(T entity);
+        Task<T> GetEntityByIdAsync(int id);
+        void  Update(T entity);
+        void Delete(T entity);
         Task<T> Obtener<T>(Expression<Func<T, bool>> condicion) where T : class;
-        Task<int> Insert(T entity);
+        void Insert(T entity);
+
+        T GetEntityById(int id);
     }
 }

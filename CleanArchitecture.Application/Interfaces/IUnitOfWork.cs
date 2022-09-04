@@ -13,5 +13,9 @@ namespace CleanArchitecture.Application.Interfaces
         IUsuarioServices usuarioServices { get; }
 
         ICompraServices compraServices { get; }
+        IDetalleCompraServices detalleCompraServices { get;}
+        Task<int> CommitAsync();
+
+
     }
 }
