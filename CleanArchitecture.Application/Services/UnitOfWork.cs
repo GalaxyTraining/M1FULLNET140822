@@ -1,7 +1,10 @@
 ﻿using CleanArchitecture.Application.Interfaces;
 using CleanArchitecture.Infraestructure.Data.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,6 +32,10 @@ namespace CleanArchitecture.Application.Services
         public async Task<int> CommitAsync()
         {
             return await  _context.SaveChangesAsync();
+        }
+        public IDbContextTransaction BeginTransaction()
+        {
+            return _context.Database.BeginTransaction(IsolationLevel.ReadUncommitted);
         }
     }
 }

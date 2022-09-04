@@ -8,6 +8,7 @@ using CleanArchitecture.MinimalApi;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 string myAllowSpecificOrigins = "_ myAllowSpecificOrigins";
@@ -192,6 +193,37 @@ app.MapPost("/Compra/Save", [Authorize] async (Compra compra,IUnitOfWork unitOfW
     {
         respuestaTransaccionDto.Resultado = Mensajes.CODIGO_ERROR;
         respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
+        return Results.BadRequest(respuestaTransaccionDto);
+    }
+});
+
+app.MapPut("/Compra/Update", [Authorize] async (CompraDto compraDto, IUnitOfWork unitOfWork) =>
+{
+    string resp = string.Empty;
+    RespuestaTransaccionDto respuestaTransaccionDto = new();
+    using var scope = unitOfWork.BeginTransaction();
+    try
+    {
+        Compra compra = JsonSerializer.Deserialize <Compra>(JsonSerializer.Serialize(compraDto));
+        unitOfWork.compraServices.Update(compra);
+
+        foreach(var element in compra.DetalleCompras)
+        {
+            DetalleCompra compraDetalle = await unitOfWork.detalleCompraServices.GetById(element.Id);
+            unitOfWork.detalleCompraServices.Update(compraDetalle);
+        }
+        int result = await unitOfWork.CommitAsync();
+        scope.Commit();
+        if (result == 0) return Results.BadRequest();
+        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
+        respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
+        return Results.Ok(respuestaTransaccionDto);
+    }
+    catch (Exception ex)
+    {
+        respuestaTransaccionDto.Resultado = Mensajes.CODIGO_ERROR;
+        respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
+        scope.Rollback();
         return Results.BadRequest(respuestaTransaccionDto);
     }
 });

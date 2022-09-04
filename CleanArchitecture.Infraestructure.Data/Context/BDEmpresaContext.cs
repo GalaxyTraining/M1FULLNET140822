@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using CleanArchitecture.Domain.Models;
+using CleanArchitecture.Infraestructure.Data.Context.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -33,71 +34,10 @@ namespace CleanArchitecture.Infraestructure.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Compra>(entity =>
-            {
-                entity.ToTable("Compra");
-
-                entity.Property(e => e.NumeroDocumento)
-                    .HasMaxLength(10)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.RazonSocial)
-                    .HasMaxLength(60)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
-            });
-
-            modelBuilder.Entity<DetalleCompra>(entity =>
-            {
-                entity.ToTable("DetalleCompra");
-
-                entity.Property(e => e.Precio).HasColumnType("decimal(10, 2)");
-
-                entity.Property(e => e.Producto)
-                    .HasMaxLength(60)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Total).HasColumnType("decimal(10, 2)");
-
-                entity.HasOne(d => d.IdCompraNavigation)
-                    .WithMany(p => p.DetalleCompras)
-                    .HasForeignKey(d => d.IdCompra)
-                    .HasConstraintName("FK_IdVenta");
-            });
-
-            modelBuilder.Entity<Producto>(entity =>
-            {
-                entity.ToTable("Producto");
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Precio).HasColumnType("decimal(18, 2)");
-
-                entity.Property(e => e.Tipo)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-            });
-
-            modelBuilder.Entity<Usuario>(entity =>
-            {
-                entity.ToTable("Usuario");
-
-                entity.Property(e => e.Clave)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Token)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-            });
-
+            modelBuilder.ApplyConfiguration(new UsuarioEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductoEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new CompraEntityTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new DetalleCompraEntityTypeConfiguration());
             OnModelCreatingPartial(modelBuilder);
         }
 
