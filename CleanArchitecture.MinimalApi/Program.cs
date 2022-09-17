@@ -55,6 +55,8 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityRequirement(securityRequirement);
 });
 DependencyContainer.RegisterServices(builder.Services);
+builder.Host.ConfigureLogging(o => o.AddAzureWebAppDiagnostics());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -75,6 +77,7 @@ app.MapPost("Security/ValidateUser", [AllowAnonymous] async (Usuario usuario,IUn
         ITokenService tokenService = new TokenService(configuration);
         if (usuario == null) Results.BadRequest();
         var credencial = await unitOfWork.usuarioServices.ValidateUser(usuario);
+      //  logger.LogInformation("Este es el usuario validado"+credencial.Nombre);
         if (credencial != null)
         {
             var Token = tokenService.BuildToken(usuario);

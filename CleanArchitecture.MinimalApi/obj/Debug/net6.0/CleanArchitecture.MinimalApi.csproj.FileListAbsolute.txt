@@ -268,3 +268,6 @@ D:\CursoNet6Angular13Galaxy\Clase04\Ensayo\CleanArchitecture.MinimalApi\obj\Debu
 D:\CursoNet6Angular13Galaxy\Clase04\Ensayo\CleanArchitecture.MinimalApi\obj\Debug\net6.0\CleanArchitecture.MinimalApi.pdb
 D:\CursoNet6Angular13Galaxy\Clase04\Ensayo\CleanArchitecture.MinimalApi\obj\Debug\net6.0\CleanArchitecture.MinimalApi.genruntimeconfig.cache
 D:\CursoNet6Angular13Galaxy\Clase04\Ensayo\CleanArchitecture.MinimalApi\obj\Debug\net6.0\ref\CleanArchitecture.MinimalApi.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\bin\Debug\net6.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\bin\Debug\net6.0\Microsoft.Extensions.Logging.AzureAppServices.dll
