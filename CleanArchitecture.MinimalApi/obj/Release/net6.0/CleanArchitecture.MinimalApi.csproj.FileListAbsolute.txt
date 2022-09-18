@@ -66,3 +66,4 @@ D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\CleanArchitecture.MinimalApi.pdb
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\CleanArchitecture.MinimalApi.genruntimeconfig.cache
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\ref\CleanArchitecture.MinimalApi.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\bin\Release\net6.0\Newtonsoft.Json.dll

@@ -1,6 +1,7 @@
 using CleanArchitecture.Application.Constants;
 using CleanArchitecture.Application.Enum;
 using CleanArchitecture.Application.Interfaces;
+using CleanArchitecture.Domain.Dtos;
 using CleanArchitecture.Domain.Models;
 using CleanArchitecture.Infraestructure.Data.Context;
 using CleanArchitecture.Infraestructure.IoC;
@@ -14,12 +15,14 @@ var builder = WebApplication.CreateBuilder(args);
 string myAllowSpecificOrigins = "_ myAllowSpecificOrigins";
 var provider=builder.Services.BuildServiceProvider();
 var configuration=provider.GetRequiredService<IConfiguration>();
+LogApi logApi = new(configuration);
+ Error error = new Error();
 builder.Services.AddDbContext<BDEmpresaContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("ConnectionSqlServer")));
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: myAllowSpecificOrigins, builder =>
     {
-        builder.WithOrigins(configuration.GetValue<string>("APP_URL_ANGULAR")).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
+        builder.WithOrigins(configuration.GetValue<string>("APP_URL_ANGULAR"), configuration.GetValue<string>("LOGGER_URL")).AllowAnyHeader().AllowAnyMethod().AllowCredentials();
     });
 });
 builder.Services.AddAuthorization();
@@ -55,7 +58,6 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityRequirement(securityRequirement);
 });
 DependencyContainer.RegisterServices(builder.Services);
-builder.Host.ConfigureLogging(o => o.AddAzureWebAppDiagnostics());
 
 var app = builder.Build();
 
@@ -96,7 +98,7 @@ app.MapPost("Security/ValidateUser", [AllowAnonymous] async (Usuario usuario,IUn
    
 });
 
-app.MapGet("/Product/List", [Authorize]  async (IUnitOfWork unitOfWork) =>
+app.MapGet("/Product/List",  async (IUnitOfWork unitOfWork) =>
 {
     try
     {
@@ -107,6 +109,7 @@ app.MapGet("/Product/List", [Authorize]  async (IUnitOfWork unitOfWork) =>
     }
     catch (Exception ex)
     {
+        logApi.GuardarLog(ex.Message, error);
         return Results.BadRequest(ex.Message);
     }
 });
@@ -126,7 +129,7 @@ app.MapGet("/Product/{id}", [Authorize] async (int id, IUnitOfWork unitOfWork) =
     }
 });
 
-app.MapPost("/Product/Save", [Authorize]  async (Producto product, IUnitOfWork unitOfWork) =>
+app.MapPost("/Product/Save", [Authorize] async (Producto product, IUnitOfWork unitOfWork) =>
 {
     string resp = string.Empty;
     RespuestaTransaccionDto respuestaTransaccionDto = new();
@@ -134,7 +137,11 @@ app.MapPost("/Product/Save", [Authorize]  async (Producto product, IUnitOfWork u
     {
          unitOfWork.productServices.InsertProduct(product);
         int result = await unitOfWork.CommitAsync();
-        if (result == 0) return Results.BadRequest();
+        if (result == 0)
+        {
+            return Results.BadRequest(); 
+        }
+          
         respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
         respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
         return Results.Ok(respuestaTransaccionDto);
@@ -143,18 +150,23 @@ app.MapPost("/Product/Save", [Authorize]  async (Producto product, IUnitOfWork u
     {
         respuestaTransaccionDto.Resultado = Mensajes.CODIGO_ERROR;
         respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
+        logApi.GuardarLog(ex.Message, error);
         return Results.BadRequest(respuestaTransaccionDto);
     }
 });
 
-app.MapPut("/Product/Update", [Authorize]  async (Producto product, IUnitOfWork unitOfWork) =>
+app.MapPut("/Product/Update",  async (Producto product, IUnitOfWork unitOfWork) =>
 {
     RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
     {
          unitOfWork.productServices.UpdateProduct(product);
         int result = await unitOfWork.CommitAsync();
-        if (result == 0) return Results.BadRequest();
+        if (result == 0)
+        {
+            return Results.BadRequest();
+        }
+           
         respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
         respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
         return Results.Ok(respuestaTransaccionDto);
@@ -163,6 +175,7 @@ app.MapPut("/Product/Update", [Authorize]  async (Producto product, IUnitOfWork 
     {
         respuestaTransaccionDto.Resultado = Mensajes.CODIGO_ERROR;
         respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
+        logApi.GuardarLog(ex.Message, error);
         return Results.BadRequest(respuestaTransaccionDto);
     }
 });

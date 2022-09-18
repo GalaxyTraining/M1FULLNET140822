@@ -20,6 +20,7 @@ D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Newtonsoft.Json.dll
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll

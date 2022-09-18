@@ -24,11 +24,11 @@ namespace CleanArchitecture.Infraestructure.Data.Context.Mapping
                     .HasMaxLength(100)
                     .IsUnicode(false);
 
-            builder.Property(e => e.Precio).HasColumnType("decimal(18, 2)");
+            builder.Property(e => e.Precio).HasColumnType("decimal(18, 2)").IsRequired();
 
             builder.Property(e => e.Tipo)
                     .HasMaxLength(100)
-                    .IsUnicode(false);
+                    .IsUnicode(false).IsRequired();
          
         }
     }

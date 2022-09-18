@@ -1,0 +1,14 @@
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\CleanArchitecture.Logger.exe
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\appsettings.Development.json
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\appsettings.json
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\CleanArchitecture.Logger.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\CleanArchitecture.Logger.deps.json
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\CleanArchitecture.Logger.runtimeconfig.json
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\CleanArchitecture.Logger.pdb
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Logging.Abstractions.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\Microsoft.Extensions.Logging.AzureAppServices.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\Microsoft.OpenApi.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.Logger\obj\Release\net6.0\PubTmp\Out\Swashbuckle.AspNetCore.SwaggerUI.dll
