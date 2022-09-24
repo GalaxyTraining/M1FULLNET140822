@@ -19,7 +19,7 @@ namespace CleanArchitecture.Infraestructure.IoC
             //   services.AddScoped<IProductServices, ProductServices>();
             //CleanArchitecture.Domain.Interfaces | CleanArchitecture.Infrastructure.Repositories
             //   services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
     }
 }
