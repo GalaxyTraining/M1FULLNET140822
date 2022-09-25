@@ -1,4 +1,5 @@
 ﻿using CleanArchitecture.Application.Interfaces;
+using CleanArchitecture.Domain.Dtos;
 using CleanArchitecture.Domain.Interfaces;
 using CleanArchitecture.Domain.Models;
 using CleanArchitecture.Infraestructure.Data.Repositories;
@@ -9,9 +10,12 @@ namespace CleanArchitecture.Application.Services
     public class DetalleCompraServices: IDetalleCompraServices
     {
         protected IDetalleCompraRepository _detalleCompraRepository;
-        public DetalleCompraServices(DbContext context)
+
+        protected readonly string _connectionString;
+        public DetalleCompraServices(DbContext context,string connectionString)
         {
-            _detalleCompraRepository = new DetalleCompraRepository(context);
+            _connectionString = connectionString;
+            _detalleCompraRepository = new DetalleCompraRepository(context, _connectionString);
         }
         public async Task<List<DetalleCompra>> GetAll()
         {
@@ -32,6 +36,10 @@ namespace CleanArchitecture.Application.Services
         public void Delete(int id)
         {
             _detalleCompraRepository.Delete(id);
+        }
+        public async Task<List<DetalleComprasDto>> ObtenerDetalleCompra(int idCompra)
+        {
+            return await _detalleCompraRepository.ObtenerDetalleCompra(idCompra);
         }
     }
 }

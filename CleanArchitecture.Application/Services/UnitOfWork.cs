@@ -14,13 +14,15 @@ namespace CleanArchitecture.Application.Services
     public class UnitOfWork: IUnitOfWork
     {
         private readonly BDEmpresaContext _context;
-        public UnitOfWork(BDEmpresaContext context)
+        protected readonly string _connectionString;
+        public UnitOfWork(BDEmpresaContext context, string connectionString)
         {
             _context = context;
             productServices = new ProductServices(context);
             usuarioServices = new UsuarioServices(context);
             compraServices = new CompraServices(context);
-            detalleCompraServices = new DetalleCompraServices(context);
+            _connectionString = connectionString;
+            detalleCompraServices = new DetalleCompraServices(context, _connectionString);
         }
         public IProductServices productServices { get; private set; }
 

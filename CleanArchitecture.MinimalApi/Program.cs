@@ -17,7 +17,7 @@ var provider=builder.Services.BuildServiceProvider();
 var configuration=provider.GetRequiredService<IConfiguration>();
 LogApi logApi = new(configuration);
  Error error = new Error();
-builder.Services.AddDbContext<BDEmpresaContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("ConnectionSqlServer")));
+//builder.Services.AddDbContext<BDEmpresaContext>(opt => opt.UseSqlServer(configuration.GetConnectionString("ConnectionSqlServer")));
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: myAllowSpecificOrigins, builder =>
@@ -57,7 +57,7 @@ builder.Services.AddSwaggerGen(c =>
 
     c.AddSecurityRequirement(securityRequirement);
 });
-DependencyContainer.RegisterServices(builder.Services);
+DependencyContainer.RegisterServices(builder.Services,configuration);
 
 var app = builder.Build();
 
@@ -98,7 +98,7 @@ app.MapPost("Security/ValidateUser", [AllowAnonymous] async (Usuario usuario,IUn
    
 });
 
-app.MapGet("/Product/List",  async (IUnitOfWork unitOfWork) =>
+app.MapGet("/Product/List", [Authorize] async (IUnitOfWork unitOfWork) =>
 {
     try
     {
@@ -155,7 +155,7 @@ app.MapPost("/Product/Save", [Authorize] async (Producto product, IUnitOfWork un
     }
 });
 
-app.MapPut("/Product/Update",  async (Producto product, IUnitOfWork unitOfWork) =>
+app.MapPut("/Product/Update", [Authorize]  async  (Producto product, IUnitOfWork unitOfWork) =>
 {
     RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
@@ -203,6 +203,7 @@ app.MapDelete("/Product/Delete/{id}", [Authorize] async (int id, IUnitOfWork uni
 app.MapPost("/Compra/Save", [Authorize] async (Compra compra,IUnitOfWork unitOfWork) =>
 {
     string resp = string.Empty;
+    compra.Id = 0;
     RespuestaTransaccionDto respuestaTransaccionDto = new();
     try
     {
@@ -249,6 +250,38 @@ app.MapPut("/Compra/Update", [Authorize] async (CompraDto compraDto, IUnitOfWork
         respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
         scope.Rollback();
         return Results.BadRequest(respuestaTransaccionDto);
+    }
+});
+
+app.MapGet("/Compra/List", async (IUnitOfWork unitOfWork) =>
+{
+    try
+    {
+        List<Compra> result = await unitOfWork.compraServices.GetAll();
+        if (result.Count == 0) return Results.NotFound();
+
+        return Results.Ok(result);
+    }
+    catch (Exception ex)
+    {
+        logApi.GuardarLog(ex.Message, error);
+        return Results.BadRequest(ex.Message);
+    }
+});
+
+app.MapGet("/Compra/Detail/{id}", async (int id,IUnitOfWork unitOfWork) =>
+{
+    try
+    {
+        List<DetalleComprasDto> result = await unitOfWork.detalleCompraServices.ObtenerDetalleCompra(id);
+        if (result.Count == 0) return Results.NotFound();
+
+        return Results.Ok(result);
+    }
+    catch (Exception ex)
+    {
+        logApi.GuardarLog(ex.Message, error);
+        return Results.BadRequest(ex.Message);
     }
 });
 app.Run();

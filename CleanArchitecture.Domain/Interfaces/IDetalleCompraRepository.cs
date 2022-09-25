@@ -1,4 +1,5 @@
-﻿using CleanArchitecture.Domain.Models;
+﻿using CleanArchitecture.Domain.Dtos;
+using CleanArchitecture.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,8 @@ namespace CleanArchitecture.Domain.Interfaces
         void Update(DetalleCompra compra);
 
         void Delete(int id);
+
+        Task<List<DetalleComprasDto>> ObtenerDetalleCompra(int idCompra);
 
     }
 }

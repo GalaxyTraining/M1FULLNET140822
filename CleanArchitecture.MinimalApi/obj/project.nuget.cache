@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "jW1No+0QZJZ8LVTzZLKLTwP/l/zUSJTvoxD5ygf/2w53mKjIsFs48Q/ogTjkIZnpeIJNphILZx6tvcTaS4mpWQ==",
+  "dgSpecHash": "MUw3NbT6TUFobPEPWCSy/RbQTrJh9dx3w9NxGNfCRrCTEAZ2joitJw9J/EQ8TE2xPd4IFEh+SRjBgqE/qsxakw==",
   "success": true,
   "projectFilePath": "D:\\CursoNet6Angular13Galaxy\\DemoClase01\\CleanArchitecture.MinimalApi\\CleanArchitecture.MinimalApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ANTHONY\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
     "C:\\Users\\ANTHONY\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.8\\microsoft.aspnetcore.authentication.jwtbearer.6.0.8.nupkg.sha512",
     "C:\\Users\\ANTHONY\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\ANTHONY\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",

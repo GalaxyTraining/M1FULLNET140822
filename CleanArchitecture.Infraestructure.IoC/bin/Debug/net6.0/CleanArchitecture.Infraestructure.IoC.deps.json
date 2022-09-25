@@ -16,6 +16,14 @@
           "CleanArchitecture.Infraestructure.IoC.dll": {}
         }
       },
+      "Dapper/2.0.123": {
+        "runtime": {
+          "lib/net5.0/Dapper.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.123.33578"
+          }
+        }
+      },
       "Microsoft.CSharp/4.5.0": {},
       "Microsoft.Data.SqlClient/2.1.4": {
         "dependencies": {
@@ -475,6 +483,7 @@
       "CleanArchitecture.Infraestructure.Data/1.0.0": {
         "dependencies": {
           "CleanArchitecture.Domain": "1.0.0",
+          "Dapper": "2.0.123",
           "Microsoft.EntityFrameworkCore": "6.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.8"
         },
@@ -489,6 +498,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "Dapper/2.0.123": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RDFF4rBLLmbpi6pwkY7q/M6UXHRJEOerplDGE5jwEkP/JGJnBauAClYavNKJPW1yOTWRPIyfj4is3EaJxQXILQ==",
+      "path": "dapper/2.0.123",
+      "hashPath": "dapper.2.0.123.nupkg.sha512"
     },
     "Microsoft.CSharp/4.5.0": {
       "type": "package",
