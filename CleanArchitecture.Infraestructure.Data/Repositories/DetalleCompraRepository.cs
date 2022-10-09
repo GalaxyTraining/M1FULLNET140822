@@ -26,6 +26,12 @@ namespace CleanArchitecture.Infraestructure.Data.Repositories
         {
             return await repositoryEF.GetEntityByIdAsync(id);
         }
+        public async Task<DetalleCompra> GetByOrderSecuenciaCompra(int? orderSecuencia,int? IdCompra)
+        {
+            DetalleCompra resultado = await repositoryEF.Obtener<DetalleCompra>( a => a.OrdenSecuencia == orderSecuencia && a.IdCompra== IdCompra);
+            return resultado;
+        }
+
         public void Insert(DetalleCompra compra)
         {
             repositoryEF.Insert(compra);
@@ -34,6 +40,7 @@ namespace CleanArchitecture.Infraestructure.Data.Repositories
         {
             repositoryEF.Update(compra);
         }
+
         public void Delete(int id)
         {
             DetalleCompra compra = repositoryEF.GetEntityById(id);

@@ -34,6 +34,11 @@ namespace CleanArchitecture.Application.Services
         {
             _compraRepository.Update(compra);
         }
+
+        public void UpdateFieldsSave(Compra compra)
+        {
+            _compraRepository.UpdateFieldsSave(compra);
+        }
         public void  Delete(int id)
         {
              _compraRepository.Delete(id);

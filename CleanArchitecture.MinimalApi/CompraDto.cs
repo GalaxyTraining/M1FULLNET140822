@@ -8,6 +8,8 @@
         public decimal? Total { get; set; }
 
         public virtual ICollection<DetalleCompraDto> DetalleCompras { get; set; }
+
+        public virtual ICollection<EliminarDetalleCompraDto> EliminarDetalleCompra{ get; set; }
     }
     public class DetalleCompraDto
     {
@@ -17,5 +19,13 @@
         public decimal? Precio { get; set; }
         public int? Cantidad { get; set; }
         public decimal? Total { get; set; }
+        public int? OrdenSecuencia { get; set; }
+
+    }
+
+    public class EliminarDetalleCompraDto
+    {
+        public int Id { get; set; }
+     
     }
 }

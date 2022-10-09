@@ -19,5 +19,6 @@ namespace CleanArchitecture.Domain.Interfaces
 
         void Delete(int id);
 
+        void UpdateFieldsSave(Compra compra);
     }
 }

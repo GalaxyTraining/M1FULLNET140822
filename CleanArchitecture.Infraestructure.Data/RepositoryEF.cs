@@ -33,6 +33,18 @@ namespace CleanArchitecture.Infraestructure.Data
             _context.Update(entity);
         //    return await _context.SaveChangesAsync() > 0;
         }
+
+        public void UpdateFieldsSave(T entity, params Expression<Func<T, object>>[] includeProperties)
+        {
+          
+                var dbEntry = _context.Entry(entity);
+                foreach (var includeProperty in includeProperties)
+                {
+                    dbEntry.Property(includeProperty).IsModified = true;
+                }
+          //  _context.SaveChanges();
+            
+        }
         public void  Delete(T entity)
         {
             _context.Remove(entity);

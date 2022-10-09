@@ -229,13 +229,27 @@ app.MapPut("/Compra/Update", [Authorize] async (CompraDto compraDto, IUnitOfWork
     using var scope = unitOfWork.BeginTransaction();
     try
     {
-        Compra compra = JsonSerializer.Deserialize <Compra>(JsonSerializer.Serialize(compraDto));
-        unitOfWork.compraServices.Update(compra);
+        if(compraDto==null) return Results.BadRequest();
+         Compra compra = JsonSerializer.Deserialize<Compra>(JsonSerializer.Serialize(compraDto));
+        unitOfWork.compraServices.UpdateFieldsSave(compra);
 
-        foreach(var element in compra.DetalleCompras)
+        foreach (var element in compra.DetalleCompras)
         {
-            DetalleCompra compraDetalle = await unitOfWork.detalleCompraServices.GetById(element.Id);
-            unitOfWork.detalleCompraServices.Update(compraDetalle);
+            if(element.Id==0)
+            {
+                unitOfWork.detalleCompraServices.Insert(element);
+            }
+        }
+        if(compraDto.EliminarDetalleCompra.Count>0)
+        {
+            foreach (var element in compraDto.EliminarDetalleCompra)
+            {
+                if(element.Id!=0)
+                {
+                    unitOfWork.detalleCompraServices.Delete(element.Id);
+                }
+              
+            }
         }
         int result = await unitOfWork.CommitAsync();
         scope.Commit();
@@ -253,7 +267,7 @@ app.MapPut("/Compra/Update", [Authorize] async (CompraDto compraDto, IUnitOfWork
     }
 });
 
-app.MapGet("/Compra/List", async (IUnitOfWork unitOfWork) =>
+app.MapGet("/Compra/List", [Authorize]  async (IUnitOfWork unitOfWork) =>
 {
     try
     {
@@ -269,7 +283,7 @@ app.MapGet("/Compra/List", async (IUnitOfWork unitOfWork) =>
     }
 });
 
-app.MapGet("/Compra/Detail/{id}", async (int id,IUnitOfWork unitOfWork) =>
+app.MapGet("/Compra/Detail/{id}", [Authorize]  async (int id,IUnitOfWork unitOfWork) =>
 {
     try
     {

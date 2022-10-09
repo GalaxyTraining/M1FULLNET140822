@@ -25,6 +25,12 @@ namespace CleanArchitecture.Application.Services
         {
             return await _detalleCompraRepository.GetById(id);
         }
+
+        public async Task<DetalleCompra> GetByOrderSecuenciaCompra(int? orderSecuencia,int? IdCompra)
+        {
+
+            return await _detalleCompraRepository.GetByOrderSecuenciaCompra(orderSecuencia, IdCompra);
+        }
         public void Insert(DetalleCompra detalleCompra)
         {
             _detalleCompraRepository.Insert(detalleCompra);

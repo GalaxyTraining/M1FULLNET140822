@@ -11,7 +11,7 @@ namespace CleanArchitecture.Domain.Models
         public decimal? Precio { get; set; }
         public int? Cantidad { get; set; }
         public decimal? Total { get; set; }
-
+        public int? OrdenSecuencia { get; set; }
         public virtual Compra? IdCompraNavigation { get; set; }
     }
 }

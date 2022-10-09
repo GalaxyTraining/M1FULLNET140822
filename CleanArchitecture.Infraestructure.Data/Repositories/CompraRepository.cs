@@ -31,7 +31,16 @@ namespace CleanArchitecture.Infraestructure.Data.Repositories
         }
         public void Update(Compra compra)
         {
-            repositoryEF.Update(compra);
+
+        repositoryEF.Update(compra);
+        }
+
+        public void UpdateFieldsSave(Compra compra)
+        {
+            //     public string? NumeroDocumento { get; set; }
+            //public string? RazonSocial { get; set; }
+            //public decimal? Total { get; set; }
+            repositoryEF.UpdateFieldsSave(compra,b=>b.NumeroDocumento,c=>c.RazonSocial,d=>d.Total);
         }
         public void  Delete(int id)
         {

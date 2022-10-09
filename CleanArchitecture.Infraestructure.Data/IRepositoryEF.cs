@@ -17,5 +17,8 @@ namespace CleanArchitecture.Infraestructure.Data
         void Insert(T entity);
 
         T GetEntityById(int id);
+
+
+       void  UpdateFieldsSave(T entity, params Expression<Func<T, object>>[] includeProperties);
     }
 }

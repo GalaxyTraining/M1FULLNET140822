@@ -18,5 +18,7 @@ namespace CleanArchitecture.Application.Interfaces
        void  Update(Compra compra);
 
         void Delete(int id);
+
+        void UpdateFieldsSave(Compra compra);
     }
 }

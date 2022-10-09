@@ -21,5 +21,7 @@ namespace CleanArchitecture.Application.Interfaces
         void Delete(int id);
 
         Task<List<DetalleComprasDto>> ObtenerDetalleCompra(int idCompra);
+
+        Task<DetalleCompra> GetByOrderSecuenciaCompra(int? orderSecuencia, int? IdCompra);
     }
 }
