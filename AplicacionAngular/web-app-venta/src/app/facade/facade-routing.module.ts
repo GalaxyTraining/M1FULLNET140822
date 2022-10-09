@@ -10,9 +10,11 @@ const routes:Routes=[
     [
         {path:'',redirectTo:'minicio',pathMatch:'full'},
         {path:'minicio',loadChildren:()=>import('../inicio/inicio.module').then(m=>m.InicioModule)},
-        {path:'mproduct',loadChildren:()=>import('../product-list/product.module').then(m=>m.ProductModule)}
+        {path:'mproduct',loadChildren:()=>import('../product-list/product.module').then(m=>m.ProductModule)},
+        {path:'mcompra',loadChildren:()=>import('../compra-list/compra.module').then(m=>m.CompraModule)}
+    
     ] 
-}  
+}
 ];
 @NgModule({
     imports:[RouterModule.forChild(routes)],

@@ -1,1 +1,51 @@
-<p>compra-list works!</p>
+<div class="example-container mat-elevation-z8 m-12">
+  <h2>Lista de Compras</h2>
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+</div>
+  <div class="mat-elevation-z8">
+    <a mat-flat-button color="primary" [routerLink]="['/mfacade/facade/mcompra/registroCompra']"><mat-icon>add</mat-icon>Agregar</a>
+   <table mat-table [dataSource]="dataSource" class="example-table" matSort matSortActive="nombre" matSortDisableClear matSortDirection="asc">
+       <ng-container matColumnDef="id">
+         <th mat-header-cell *matHeaderCellDef>Id</th>
+         <td mat-cell *matCellDef="let row">{{row.id}}</td>
+       </ng-container>
+
+       <ng-container matColumnDef="numeroDocumento">
+        <th mat-header-cell *matHeaderCellDef>Numero Documento</th>
+        <td mat-cell *matCellDef="let row">{{row.numeroDocumento}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="razonSocial">
+        <th mat-header-cell *matHeaderCellDef>Razon Social</th>
+        <td mat-cell *matCellDef="let row">{{row.razonSocial}}</td>
+      </ng-container>
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let row">{{row.total | number:'1.2-2'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let row">
+
+         <button mat-raised-button color="primary" focusable="false"  [routerLink]="['/mfacade/facade/mcompra/registroCompra']"  [queryParams]=
+         "{id:row.id}">Editar</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns:displayedColumns;"></tr>
+   </table>
+
+   <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons></mat-paginator>
+  </div>
+
+
+
+
+
+
+
+
+
+</div>
