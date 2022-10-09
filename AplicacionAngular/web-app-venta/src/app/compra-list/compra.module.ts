@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CompraListRoutingModule } from './compra-list-routing.module';
+import { CompraRoutingModule } from './compra-routing.module';
 import { CompraListComponent } from './compra-list.component';
 
 
@@ -11,7 +11,7 @@ import { CompraListComponent } from './compra-list.component';
   ],
   imports: [
     CommonModule,
-    CompraListRoutingModule
+    CompraRoutingModule
   ]
 })
-export class CompraListModule { }
+export class CompraModule { }
