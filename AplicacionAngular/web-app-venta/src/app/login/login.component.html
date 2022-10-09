@@ -1,1 +1,25 @@
-<p>login works!</p>
+<div class="col-md-12">
+
+     <div class="card card-container">
+
+        <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card"/>
+        <form class="form" #formLogin="ngForm" (ngSubmit)="logIn(formLogin)">
+             <div class="alert alert-danger" role="alert" *ngIf="isError">
+                {{mensaje}}
+             </div>
+             <div class="form-group">
+                 <label>Usuario</label>
+                 <input type="text" name="username" placeholder="Ingrese su usuario" [(ngModel)]="usuario" required/>
+             </div>
+             <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Ingrese su clave" [(ngModel)]="clave" required/>
+            </div>
+            <button type="submit" class="btn btn-primary" id="login-button">Aceptar</button>
+        </form>
+
+     </div>
+
+
+
+</div>
