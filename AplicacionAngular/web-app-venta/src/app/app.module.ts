@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductService } from './product-list/product.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-confirmacion.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DialogoConfirmacionComponent
     
   ],
   imports: [
