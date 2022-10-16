@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Compra } from '../models/compra';
+import { ParametroBusqueda } from '../models/ParametroBusqueda';
 import { CompraService } from './compra.service';
 
 @Component({
@@ -20,10 +21,11 @@ export class CompraListComponent implements OnInit {
   constructor(private api:CompraService ) { }
 
   ngOnInit(): void {
-    this.listarCompra();
+    this.listarCompra('','');
   }
-   listarCompra(){
-       this.api.ListCompras().subscribe({
+   listarCompra(numeroDocumento:string,razonSocial:string){
+    let parametroBusqueda=new ParametroBusqueda(numeroDocumento,razonSocial);
+       this.api.ListCompras(parametroBusqueda).subscribe({
         next:(res:Compra[])=>{
           this.data=res;
           this.isLoadingResults=false;

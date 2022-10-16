@@ -7,6 +7,7 @@ import {catchError,tap} from 'rxjs/operators';
 import { TransaccionCompra } from '../models/transaccionCompra';
 import { Respuesta } from '../models/respuesta';
 import { EditProductListaDetalle } from '../models/editProductListaDetalle';
+import { ParametroBusqueda } from '../models/ParametroBusqueda';
 const httpOptions={
   headers:new HttpHeaders({
     'Content-Type':'application/json',
@@ -20,8 +21,8 @@ export class CompraService {
 
   constructor(private http:HttpClient) { }
   private readonly API_URL=environment.webAPI;
-   ListCompras():Observable<Compra[]>{
-     return this.http.get<Compra[]>(this.API_URL+"Compra/List",httpOptions).pipe(tap((data)=>{
+   ListCompras(parametro:ParametroBusqueda):Observable<Compra[]>{
+     return this.http.post<Compra[]>(this.API_URL+"Compra/List",parametro,httpOptions).pipe(tap((data)=>{
          console.log(JSON.stringify(data));
      }),catchError(err=>{throw new Error(JSON.stringify(err))}))
    }
