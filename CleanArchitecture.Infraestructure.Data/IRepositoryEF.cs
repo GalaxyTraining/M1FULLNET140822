@@ -20,5 +20,10 @@ namespace CleanArchitecture.Infraestructure.Data
 
 
        void  UpdateFieldsSave(T entity, params Expression<Func<T, object>>[] includeProperties);
+
+
+     void  DeleteList(List<T> entity);
+
+      Task<List<T>> ObtenerList<T>(Expression<Func<T, bool>> condicion) where T : class;
     }
 }

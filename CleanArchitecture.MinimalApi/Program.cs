@@ -267,11 +267,11 @@ app.MapPut("/Compra/Update", [Authorize] async (CompraDto compraDto, IUnitOfWork
     }
 });
 
-app.MapGet("/Compra/List", [Authorize]  async (IUnitOfWork unitOfWork) =>
+app.MapPost("/Compra/List", [Authorize]  async (ParametroBusqueda parametroBusqueda, IUnitOfWork unitOfWork) =>
 {
     try
     {
-        List<Compra> result = await unitOfWork.compraServices.GetAll();
+        List<Compra> result = await unitOfWork.compraServices.listaBusquedaCompra(parametroBusqueda.NumeroDocumento, parametroBusqueda.RazonSocial);
         if (result.Count == 0) return Results.NotFound();
 
         return Results.Ok(result);
@@ -296,6 +296,27 @@ app.MapGet("/Compra/Detail/{id}", [Authorize]  async (int id,IUnitOfWork unitOfW
     {
         logApi.GuardarLog(ex.Message, error);
         return Results.BadRequest(ex.Message);
+    }
+});
+
+app.MapDelete("/Compra/Delete/{id}", [Authorize] async (int id, IUnitOfWork unitOfWork) =>
+{
+    RespuestaTransaccionDto respuestaTransaccionDto = new();
+    try
+    {
+       await   unitOfWork.detalleCompraServices.DeleteList(id);
+        unitOfWork.compraServices.Delete(id);
+        int result = await unitOfWork.CommitAsync();
+        if (result == 0) return Results.BadRequest();
+        respuestaTransaccionDto.Resultado = CodeResponse.GetCode(result);
+        respuestaTransaccionDto.Descripcion = Mensajes.TRANSACCION_EXITOSA;
+        return Results.Ok(respuestaTransaccionDto);
+    }
+    catch (Exception ex)
+    {
+        respuestaTransaccionDto.Resultado = Mensajes.CODIGO_ERROR;
+        respuestaTransaccionDto.Descripcion = Mensajes.ERROR_TRANSACCION + ex.Message;
+        return Results.BadRequest(respuestaTransaccionDto);
     }
 });
 app.Run();

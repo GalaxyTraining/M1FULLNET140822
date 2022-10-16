@@ -47,5 +47,12 @@ namespace CleanArchitecture.Infraestructure.Data.Repositories
             Compra compra =  repositoryEF.GetEntityById(id);
           repositoryEF.Delete(compra);
         }
+        public async Task<List<Compra>> listaBusquedaCompra(string numeroDocumento, string razonSocial)
+        {
+            List<Compra> listaBusquedaCompra = new List<Compra>();
+
+            listaBusquedaCompra = await repositoryEF.ObtenerList<Compra>(a => (a.NumeroDocumento == numeroDocumento || string.IsNullOrEmpty(numeroDocumento)) && (a.RazonSocial == razonSocial || string.IsNullOrEmpty(razonSocial)));
+            return listaBusquedaCompra;
+        }
     }
 }

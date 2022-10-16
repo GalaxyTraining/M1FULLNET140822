@@ -46,7 +46,12 @@ namespace CleanArchitecture.Infraestructure.Data.Repositories
             DetalleCompra compra = repositoryEF.GetEntityById(id);
             repositoryEF.Delete(compra);
         }
-
+        public async Task DeleteListDetalleCompra(int idCompra)
+        {
+            List<DetalleCompra> lista = new();
+            lista = await repositoryEF.ObtenerList<DetalleCompra>(a => a.IdCompra == idCompra);
+            repositoryEF.DeleteList(lista);
+        }
         public async Task<List<DetalleComprasDto>> ObtenerDetalleCompra(int idCompra)
         {
             using var connection = new SqlConnection(_connectionString);

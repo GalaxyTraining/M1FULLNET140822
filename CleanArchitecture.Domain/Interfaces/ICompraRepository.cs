@@ -20,5 +20,7 @@ namespace CleanArchitecture.Domain.Interfaces
         void Delete(int id);
 
         void UpdateFieldsSave(Compra compra);
+
+        Task<List<Compra>> listaBusquedaCompra(string numeroDocumento, string razonSocial);
     }
 }

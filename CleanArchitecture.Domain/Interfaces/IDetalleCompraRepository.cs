@@ -21,5 +21,7 @@ namespace CleanArchitecture.Domain.Interfaces
         Task<List<DetalleComprasDto>> ObtenerDetalleCompra(int idCompra);
 
         Task<DetalleCompra> GetByOrderSecuenciaCompra(int? orderSecuencia, int? IdCompra);
+
+        Task DeleteListDetalleCompra(int idCompra);
     }
 }

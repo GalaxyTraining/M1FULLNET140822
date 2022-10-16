@@ -54,10 +54,21 @@ namespace CleanArchitecture.Infraestructure.Data
         {
             return await _context.Set<T>().FirstOrDefaultAsync(condicion);
         }
+
+        public async  Task< List<T>> ObtenerList<T>(Expression<Func<T, bool>> condicion) where T : class
+        {
+            return  await _context.Set<T>().Where(condicion).ToListAsync();
+        }
         public void  Insert(T entity)
         {
             _context.Add(entity);
           //    return await _context.SaveChangesAsync();
+        }
+
+        public void DeleteList(List<T> entity)
+        {
+            _context.RemoveRange(entity);
+            //    return await _context.SaveChangesAsync();
         }
     }
 }

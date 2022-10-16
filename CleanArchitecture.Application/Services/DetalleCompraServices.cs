@@ -47,5 +47,9 @@ namespace CleanArchitecture.Application.Services
         {
             return await _detalleCompraRepository.ObtenerDetalleCompra(idCompra);
         }
+        public async Task DeleteList(int idCompra)
+        {
+            await _detalleCompraRepository.DeleteListDetalleCompra(idCompra);
+        }
     }
 }

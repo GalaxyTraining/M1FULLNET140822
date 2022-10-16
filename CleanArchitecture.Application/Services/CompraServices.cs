@@ -43,5 +43,10 @@ namespace CleanArchitecture.Application.Services
         {
              _compraRepository.Delete(id);
         }
+        public async Task<List<Compra>> listaBusquedaCompra(string numeroDocumento,string razonSocial)
+        {
+            List<Compra> list = await _compraRepository.listaBusquedaCompra(numeroDocumento, razonSocial);
+            return list;
+        }
     }
 }
