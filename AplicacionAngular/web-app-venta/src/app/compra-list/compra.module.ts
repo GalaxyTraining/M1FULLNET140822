@@ -40,7 +40,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSliderModule,
     MatSlideToggleModule,
     MatButtonToggleModule,
-    MatSelectModule,ReactiveFormsModule,MatDialogModule,FormsModule
+    MatSelectModule,ReactiveFormsModule,FormsModule
   ]
 })
 export class CompraModule { }

@@ -3,6 +3,20 @@
   <div class="example-loading-shade" *ngIf="isLoadingResults">
     <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
 </div>
+<div class="mat-elevation-z8">
+  <form [formGroup]="casesForm">
+    <mat-form-field class="example-full-width">
+    <mat-label>Numero Documento</mat-label>
+    <input matInput placeholder="Numero Documento" formControlName="numeroDocumento">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Razon Social</mat-label>
+      <input matInput placeholder="Razon Social" formControlName="razonSocial">
+      </mat-form-field>
+  </form>
+   <button class="btn btn-primary"  (click)="buscar()">Buscar</button>
+   <button class="btn btn-primary"  (click)="limpiar()">Limpiar</button>
+</div>
   <div class="mat-elevation-z8">
     <a mat-flat-button color="primary" [routerLink]="['/mfacade/facade/mcompra/registroCompra']"><mat-icon>add</mat-icon>Agregar</a>
    <table mat-table [dataSource]="dataSource" class="example-table" matSort matSortActive="nombre" matSortDisableClear matSortDirection="asc">
@@ -30,6 +44,15 @@
 
          <button mat-raised-button color="primary" focusable="false"  [routerLink]="['/mfacade/facade/mcompra/registroCompra']"  [queryParams]=
          "{id:row.id}">Editar</button>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="borrar">
+       <th mat-header-cell *matHeaderCellDef>Borrar</th>
+        <td mat-cell *matCellDef="let row">
+         <button mat-raised-button color="warn" focusable="false" (click)="borrarFila(row.id)">
+          Borrar
+         </button>
+
         </td>
       </ng-container>
 

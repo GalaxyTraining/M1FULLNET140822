@@ -7,10 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductService } from './product-list/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-confirmacion.component';
+import { DialogAlertComponent } from './dialog-alert/dialog-alert.component';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
-    DialogoConfirmacionComponent
+    DialogoConfirmacionComponent,
+    DialogAlertComponent
     
   ],
   imports: [
@@ -20,7 +23,7 @@ import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-con
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
- 
+    MatDialogModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

@@ -6,12 +6,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompraService } from '../compra-list/compra.service';
+import { DialogAlertComponent } from '../dialog-alert/dialog-alert.component';
 import { DialogoConfirmacionComponent } from '../dialogo-confirmacion/dialogo-confirmacion.component';
 import { EditProductListaDetalle } from '../models/editProductListaDetalle';
 import { EliminarProductListaDetalle } from '../models/eliminarProductListaDetalle';
 import { ListaDetalleCompra } from '../models/listarDetalleCompra';
 import { Respuesta } from '../models/respuesta';
 import { TransaccionCompra } from '../models/transaccionCompra';
+import { Constants } from '../utils/constants';
 export class MyErrorStateMatcher implements ErrorStateMatcher{
   isErrorState(control:FormControl | null,form:FormGroupDirective | NgForm | null):boolean
   {
@@ -97,7 +99,7 @@ constructor(private router:Router,private route:ActivatedRoute,private api:Compr
         }
         this.totalDetalle=this.casesForm.value.precio*this.casesForm.value.cantidad;
         this.total=this.total+this.totalDetalle;
-        let elementoCompra=new EditProductListaDetalle(0,this.id,max+1,this.casesForm.value.numeroDocumento,this.casesForm.value.razonSocial,0,this.casesForm.value.producto,this.casesForm.value.precio,this.casesForm.value.cantidad,this.casesForm.value.totalDetalle);
+        let elementoCompra=new EditProductListaDetalle(0,this.id,max+1,this.casesForm.value.numeroDocumento,this.casesForm.value.razonSocial,0,this.casesForm.value.producto,this.casesForm.value.precio,this.casesForm.value.cantidad,this.totalDetalle);
         this.editProductListaDetalle.push(elementoCompra);
         this.dataSource=new MatTableDataSource<EditProductListaDetalle>(this.editProductListaDetalle);
       }
@@ -153,12 +155,12 @@ constructor(private router:Router,private route:ActivatedRoute,private api:Compr
   {
     if(this.listDetalleCompra.length==0)
     {
-      alert("El detalle de la compra debe tener registros")
+     this.mensajeAlerta(Constants.MENSAJE_COMPRA.VALIDAR_REGISTRO_GRILLA);
       return;
     }
     this.dialogo
     .open(DialogoConfirmacionComponent, {
-      data: `¿Estas Seguro de guardar la informacion de la compra?`
+      data: `¿Estas seguro de guardar la informacion de la compra?`
     })
     .afterClosed()
     .subscribe((confirmado: Boolean) => {
@@ -170,24 +172,15 @@ constructor(private router:Router,private route:ActivatedRoute,private api:Compr
             this.isLoadingResults=false;
             this.router.navigate(["/mfacade/facade/mcompra/compra"]);
 
-            this.mensaje= "Se creo correctamente la compra";
-          //   const dialogRef = this.dialogo.open(DialogAlertComponent, {
-          //  width: '250px',
-          //  data: {mensaje: this.mensaje}
-
-          //   });
- 
-       
-      
+            //this.mensaje= Constants.MENSAJE_COMPRA.COMPRA_EXITOSA;
+            this.mensaje=res.descripcion;
+            this.mensajeAlerta(this.mensaje);
              
           },error:(e)=>{
 
             console.log(e);
-          
-
-  
-     
-  
+           this.mensaje=Constants.MENSAJE_ERROR.CREAR+":"+e.message;
+            this.mensajeAlerta(this.mensaje);
           }
         })
       } else {
@@ -196,8 +189,44 @@ constructor(private router:Router,private route:ActivatedRoute,private api:Compr
     });
   }
   editar(){
-
+     if(this.editProductListaDetalle.length==0)
+     {
+        this.mensajeAlerta(Constants.MENSAJE_COMPRA.VALIDAR_REGISTRO_GRILLA);
+        return;
+     }
+     this.dialogo.open(DialogoConfirmacionComponent,{data:`¿Estas seguro de editar la informacion de la compra?`})
+     .afterClosed().subscribe((confirmado:Boolean) => {
+        if(confirmado)
+        {
+          let detalleCompra=new TransaccionCompra(this.casesForm.value.id,this.casesForm.value.numeroDocumento,this.casesForm.value.razonSocial,this.total,this.editProductListaDetalle,this.eliminarProductoDetalle);
+          this.api.EditCompras(detalleCompra).subscribe({
+            next:(res:Respuesta)=>{
+               console.log(res);
+               this.router.navigate(["/mfacade/facade/mcompra/compra"]);
+               this.mensaje=res.descripcion;
+               this.mensajeAlerta(this.mensaje);
+            },error:(e)=>{
+               this.mensaje=Constants.MENSAJE_ERROR.EDITAR+":"+e.message;
+               this.mensajeAlerta(this.mensaje);
+            }
+          })
+        }
+        else
+        {
+          console.log("no deseaste guardar");
+        }
+     })
   }
+   mensajeAlerta(mensaje:string){
+    this.mensaje=mensaje;
+    const dialogRef=this.dialogo.open(DialogAlertComponent,{
+      width:'250px',
+      data:{mensaje:this.mensaje}
+    })
+    dialogRef.afterClosed().subscribe(result=>{
+      console.log('The dialog was closed');
+    })
+   }
 }
 
 

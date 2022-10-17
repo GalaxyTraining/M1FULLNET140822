@@ -8,5 +8,9 @@ export class Constants{
       }
 
     }
+    public static readonly MENSAJE_COMPRA={
+      VALIDAR_REGISTRO_GRILLA:"El detalle de la compra debe tener registros",
+      COMPRA_EXITOSA:"Se creo correctamente la compra"
+    }
 
 }

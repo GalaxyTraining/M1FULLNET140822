@@ -24,7 +24,7 @@ export class CompraService {
    ListCompras(parametro:ParametroBusqueda):Observable<Compra[]>{
      return this.http.post<Compra[]>(this.API_URL+"Compra/List",parametro,httpOptions).pipe(tap((data)=>{
          console.log(JSON.stringify(data));
-     }),catchError(err=>{throw new Error(JSON.stringify(err))}))
+     }),catchError(err=>{throw new Error(JSON.stringify(err.status))}))
    }
    SaveCompras(transaccionCompra:TransaccionCompra):Observable<Respuesta>{
 
@@ -42,6 +42,10 @@ export class CompraService {
       console.log(data);
  }),catchError(err=>{throw console.log(err)}));
   }
-
+  DeleteCompras(id:number):Observable<Respuesta>{
+     return this.http.delete<Respuesta>(this.API_URL+"Compra/Delete/"+id,httpOptions).pipe(tap((data)=>{
+        console.log(data);
+     }),catchError(err=>{throw console.log(err)}));
+  }
  }
 
