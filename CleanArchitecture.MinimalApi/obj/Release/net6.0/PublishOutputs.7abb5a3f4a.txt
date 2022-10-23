@@ -5,6 +5,7 @@ D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\CleanArchitecture.MinimalApi.deps.json
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\CleanArchitecture.MinimalApi.runtimeconfig.json
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\CleanArchitecture.MinimalApi.pdb
+D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Dapper.dll
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 D:\CursoNet6Angular13Galaxy\DemoClase01\CleanArchitecture.MinimalApi\obj\Release\net6.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
