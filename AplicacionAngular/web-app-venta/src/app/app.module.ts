@@ -5,16 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ProductService } from './product-list/product.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-confirmacion.component';
 import { DialogAlertComponent } from './dialog-alert/dialog-alert.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { InterceptorService } from './interceptors/interceptor.service';
+import { AutenticationGuardService } from './login/autentication-guard.service';
 @NgModule({
   declarations: [
     AppComponent,
     DialogoConfirmacionComponent,
     DialogAlertComponent
-    
   ],
   imports: [
     FormsModule,
@@ -25,7 +26,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     MatDialogModule
   ],
-  providers: [ProductService],
+  providers: [ProductService,{
+    provide:HTTP_INTERCEPTORS, useClass:InterceptorService,
+    multi:true,
+  },AutenticationGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

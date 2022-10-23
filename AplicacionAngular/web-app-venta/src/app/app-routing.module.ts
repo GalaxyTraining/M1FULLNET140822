@@ -1,10 +1,11 @@
 import { Injectable, NgModule } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterModule, RouterStateSnapshot, Routes, TitleStrategy } from '@angular/router';
+import { AutenticationGuardService } from './login/autentication-guard.service';
 
 const routes: Routes = [{path:'',redirectTo:'mlogin',pathMatch:'full'},
 {path:'mlogin',loadChildren:()=>import('./login/login.module').then(m=>m.LoginModule)},
-{path:'mfacade',loadChildren:()=>import('./facade/facade.module').then(m=>m.FacadeModule)},
+{path:'mfacade',loadChildren:()=>import('./facade/facade.module').then(m=>m.FacadeModule),canActivate:[AutenticationGuardService]},
 { path: '**', redirectTo: 'mlogin' }
 ];
 
